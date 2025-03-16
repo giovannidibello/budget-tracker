@@ -10,6 +10,9 @@ const budgetRouter = require('./routers/BudgetRouter');
 // middleware CORS
 app.use(cors({ origin: process.env.FE_APP }));
 
+// registro il body-parser
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.send("Server del Budget Tracker");
 })

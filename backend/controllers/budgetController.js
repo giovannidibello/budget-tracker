@@ -55,14 +55,23 @@ function store(req, res) {
     // le altre info dal body
     const { amount, type, category_id, payment_method, description, date } = req.body;
 
-    const insertReviewSql = 'INSERT INTO transactions (amount, type, category_id, payment_method, description, date) VALUES (?, ?, ?, ?, ?, ?)'
+    // determino la query in base al tipo (entrata o uscita)
+    let insertSql;
+
+    if (type === 'income') {
+        // se è un'entrata
+        insertSql = 'INSERT INTO incomes (amount, category_id, payment_method_id, description, date) VALUES (?, ?, ?, ?, ?)';
+    } else if (type === 'expense') {
+        // se è una spesa
+        insertSql = 'INSERT INTO expenses (amount, category_id, payment_method_id, description, date) VALUES (?, ?, ?, ?, ?)';
+    } else {
+        return res.status(400).json({ error: 'Invalid type, must be "income" or "expense"' });
+    }
 
     // eseguo la query
-    connection.query(insertReviewSql, [amount, type, category_id, payment_method, description, date], (err, results) => {
+    connection.query(insertSql, [amount, category_id, payment_method, description, date], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
-        res.status(201);
-        res.json({ message: 'Transaction added', id: results.insertId });
-
+        res.status(201).json({ message: `${type.charAt(0).toUpperCase() + type.slice(1)} added successfully`, id: results.insertId });
     });
 
 }

@@ -12,7 +12,7 @@ router.get('/incomes', budgetController.indexIncomes);
 router.get('/expenses', budgetController.indexExpenses);
 
 // store 
-router.post('/', budgetController.store);
+router.post('/transactions', budgetController.store);
 
 // esporto router
 module.exports = router;

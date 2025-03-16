@@ -12,11 +12,14 @@ import { format } from 'date-fns';
 // uso di state e effect
 import { useState, useEffect } from "react"
 
+import AddTransactionForm from '../components/AddTransactionForm';
+
 export default function HomePage() {
 
     // setto lo stato del componente
     const [incomes, setIncomes] = useState([]);
     const [expenses, setExpenses] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
     // funzione chiamata dei dati index
     const fetchTransaction = () => {
@@ -49,11 +52,29 @@ export default function HomePage() {
 
     useEffect(fetchTransaction, [])
 
+    // calcolo la somma totale delle entrate
+    const totalIncome = incomes.reduce((sum, income) => sum + parseFloat(income.amount), 0).toFixed(2);
+
+    // calcolo la somma totale delle uscite
+    const totalExpense = expenses.reduce((sum, expense) => sum + parseFloat(expense.amount), 0).toFixed(2);
+
+
+    // funzioni per gestire l'apertura e la chiusura del modale
+    const handleShowModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+
+
     return (
         <>
 
             <Container className="mt-4">
-                <h2 className="mb-3">Le Tue Transazioni</h2>
+                <h2 className="mb-3 d-flex justify-content-between align-items-center">
+                    I tuoi Movimenti
+
+                    <Button variant="primary" onClick={handleShowModal} >
+                        Aggiungi Movimento
+                    </Button>
+                </h2>
 
                 {/* Tabella Entrate */}
                 <h3>Entrate</h3>
@@ -83,6 +104,7 @@ export default function HomePage() {
                         ))}
                     </tbody>
                 </Table>
+                <h5 className='text-end'>Totale Entrate: {totalIncome}€</h5>
 
                 {/* Tabella Spese */}
                 <h3>Spese</h3>
@@ -112,7 +134,12 @@ export default function HomePage() {
                         ))}
                     </tbody>
                 </Table>
+                <h5 className='text-end'>Totale Uscite: {totalExpense}€</h5>
+
             </Container>
+
+            {/* modale per aggiungere una nuova transazione */}
+            <AddTransactionForm show={showModal} handleClose={handleCloseModal} fetchTransaction={fetchTransaction} />
 
         </>
     );
