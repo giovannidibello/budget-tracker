@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 // richiamo il file delle rotte
-app.use("/api/transactions", budgetRouter)
+app.use("/api", budgetRouter)
 
 app.listen(port, () => {
     console.log(`Esempio di applicazione in ascolto sulla porta ${port}`)

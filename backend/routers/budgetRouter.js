@@ -5,8 +5,11 @@ const router = express.Router();
 // importo le funzioni del controller
 const budgetController = require("../controllers/BudgetController");
 
-// index
-router.get('/', budgetController.index);
+// index income
+router.get('/incomes', budgetController.indexIncomes);
+
+// index expenses
+router.get('/expenses', budgetController.indexExpenses);
 
 // store 
 router.post('/', budgetController.store);
