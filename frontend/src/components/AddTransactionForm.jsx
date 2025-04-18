@@ -107,14 +107,26 @@ const AddTransactionForm = ({ show, handleClose, fetchTransaction }) => {
                             required
                         >
                             <option value="">Seleziona Categoria</option>
-                            {/* Aggiungi le opzioni delle categorie qui */}
-                            <option value="1">Affitto</option>
-                            <option value="2">Stipendio</option>
-                            <option value="3">Spesa</option>
-                            <option value="4">Trasporto</option>
-                            <option value="5">Ristorazione</option>
-                            <option value="6">Intrattenimento</option>
-                            <option value="7">Bollette</option>
+                            {/* Categorie per Entrate */}
+                            {newTransaction.type === 'income' && (
+                                <>
+                                    <option value="2">Stipendio</option>
+                                </>
+                            )}
+                            {/* Categorie per Uscite */}
+                            {newTransaction.type === 'expense' && (
+                                <>
+                                    <option value="1">Affitto</option>
+                                    <option value="3">Spesa</option>
+                                    <option value="4">Trasporto</option>
+                                    <option value="5">Ristorazione</option>
+                                    <option value="6">Intrattenimento</option>
+                                    <option value="7">Bollette</option>
+                                </>
+                            )}
+
+
+
                         </Form.Control>
                     </Form.Group>
 
@@ -147,7 +159,7 @@ const AddTransactionForm = ({ show, handleClose, fetchTransaction }) => {
                         />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    <Button className='button' variant="success" type="submit">
                         Aggiungi Movimento
                     </Button>
                 </Form>
