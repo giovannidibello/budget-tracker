@@ -28,7 +28,7 @@ export default function MonthlyBarChart({ incomes = [], expenses = [] }) {
 
     return (
         <div className="text-center">
-            <h4>Entrate e Uscite Mensili</h4>
+            <h4>Grafico Entrate-Uscite Mensili</h4>
             <ResponsiveContainer width="95%" height={350}>
                 <BarChart data={data}>
                     <XAxis dataKey="month" />
