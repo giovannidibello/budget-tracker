@@ -14,5 +14,8 @@ router.get('/expenses', budgetController.indexExpenses);
 // store 
 router.post('/transactions', budgetController.store);
 
+// destroy income
+router.delete('/incomes/:id', budgetController.destroyIncomes);
+
 // esporto router
 module.exports = router;

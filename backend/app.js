@@ -5,7 +5,7 @@ const port = process.env.PORT;
 const cors = require("cors");
 
 // importo il file delle rotte
-const budgetRouter = require('./routers/BudgetRouter');
+const budgetRouter = require('./routers/budgetRouter');
 
 // middleware CORS
 app.use(cors({ origin: process.env.FE_APP }));
