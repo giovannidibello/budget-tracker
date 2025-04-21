@@ -23,7 +23,7 @@ Frontend sviluppato in React + Bootstrap, backend Node.js con Express e MySQL.
 
 ## 📸 Preview
 
-![Anteprima GIF](.frontend/public/BudgetTrackerPreview.gif)  
+![Anteprima GIF](./public/BudgetTrackerPreview.gif)  
 > Demo dell’interfaccia con visualizzazione delle funzioni.
 
 ## 📁 Struttura del Progetto
