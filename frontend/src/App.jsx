@@ -15,20 +15,24 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage"
 import IncomePage from "./pages/IncomePage";
 import ExpensePage from "./pages/ExpensePage";
+// global context
+import GlobalProvider from './context/GlobalContext.jsx'
 
 function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayout />} >
-          <Route index path="/" element={<HomePage />} />
-          <Route path="/entrate" element={<IncomePage />} />
-          <Route path="/uscite" element={<ExpensePage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <GlobalProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />} >
+            <Route index path="/" element={<HomePage />} />
+            <Route path="/entrate" element={<IncomePage />} />
+            <Route path="/uscite" element={<ExpensePage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GlobalProvider>
   )
 }
 
