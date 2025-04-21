@@ -1,12 +1,71 @@
-# React + Vite
+# 💰 Budget Tracker - WebApp con React & Express
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Applicazione full-stack per monitorare le **entrate** e le **uscite** mensili, con **grafico riepilogativo** e interfaccia user-friendly.  
+Frontend sviluppato in React + Bootstrap, backend Node.js con Express e MySQL.
 
-Currently, two official plugins are available:
+## 🖥️ Tecnologie utilizzate
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Frontend - [webapp-react](https://github.com/giovannidibello/budget-tracker/tree/main/frontend):**
 
-## Expanding the ESLint configuration
+- React
+- React Router
+- React-Bootstrap
+- Chart.js (per il grafico a barre)
+- Date-fns
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Backend - [webapp-express](https://github.com/giovannidibello/budget-tracker/tree/main/backend):**
+
+- Node.js
+- Express
+- MySQL
+- CORS
+- Dotenv
+
+## 📸 Preview
+
+![Anteprima GIF](./public/BudgetTrackerPreview.gif)  
+> Demo dell’interfaccia con visualizzazione delle funzioni.
+
+## 📁 Struttura del Progetto
+
+budget-tracker/ ├── webapp-react/ │ ├── public/ │ │ ├── gif.gif # Demo animata del progetto │ │ └── ... │ ├── src/ │ │ ├── components/ # AddTransactionForm, MonthlyBarChart, ecc. │ │ ├── context/ # GlobalContext.jsx │ │ ├── layouts/ # DefaultLayout.jsx │ │ ├── pages/ # HomePage, IncomePage, ExpensePage │ │ ├── App.jsx │ │ └── index.js │ ├── .env │ └── README.md │ ├── webapp-express/ │ ├── controllers/ # BudgetController.js │ ├── data/ # db.js │ ├── middlewares/ # error handler, not found, etc. │ ├── routers/ # budgetRouter.js │ ├── public/ │ ├── .env │ └── server.js
+
+## 🚀 Avvio del progetto
+
+### 1. Backend (Express)
+
+```bash
+cd webapp-express
+npm install
+cp .env.example .env
+# Modifica il file .env con le credenziali DB
+npm start
+
+cd webapp-react
+npm install
+npm run dev
+
+## 🎯 Funzionalità
+
+- ✅ Visualizzazione mensile di **entrate**, **uscite** e **cash flow**
+- ✅ Navigazione tra mesi e pagine dettagliate
+- ✅ Aggiunta di nuove transazioni tramite form modale
+- ✅ Eliminazione delle transazioni
+- ✅ **Grafico a barre** per il riepilogo visivo mensile
+- ✅ Interfaccia responsive e moderna con **React-Bootstrap**
+- ✅ Connessione al database MySQL tramite backend Express
+- ✅ Codice organizzato in componenti riutilizzabili
+
+## 🧠 Obiettivi didattici
+
+- 📌 Applicare **React Context API** per la gestione dello stato globale
+- 📌 Utilizzare **React Router** per la navigazione SPA
+- 📌 Creare un backend RESTful con **Express**
+- 📌 Effettuare chiamate asincrone con `fetch` per interagire con le API
+- 📌 Progettare e gestire un database relazionale in **MySQL**
+- 📌 Separare logicamente frontend e backend in due repository
+
+## 👨‍💻 Autore
+
+- Giovanni Di Bello  
+- [GitHub](https://github.com/giovannidibello)
